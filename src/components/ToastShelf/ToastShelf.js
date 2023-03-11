@@ -9,6 +9,9 @@ function ToastShelf() {
   const {toasts, discardToast} = React.useContext(ToastProvider);
   return (
     <ol
+      role="region"
+      aria-live="polite"
+      aria-label="Notification"
       className={styles.wrapper}
     >
       {toasts.map(({id, variant, message}) => (
