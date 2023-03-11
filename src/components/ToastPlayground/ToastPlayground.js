@@ -13,6 +13,15 @@ function ToastPlayground() {
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
   const [toasts, setToasts] = React.useState([]);
 
+  React.useEffect(() => {
+    function handleKeydown(event) {
+      if (event.code === 'Escape') setToasts([]);
+    }
+
+    document.addEventListener('keydown', handleKeydown);
+    return () => document.removeEventListener('keydown', handleKeydown);
+  }, []);
+
   function handleSubmit(event) {
     event.preventDefault();
     setToasts([
