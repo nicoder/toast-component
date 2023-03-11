@@ -8,7 +8,9 @@ import styles from './ToastShelf.module.css';
 function ToastShelf() {
   const {toasts, discardToast} = React.useContext(ToastProvider);
   return (
-    <ol className={styles.wrapper}>
+    <ol
+      className={styles.wrapper}
+    >
       {toasts.map(({id, variant, message}) => (
         <li key={id} className={styles.toastWrapper}>
           <Toast variant={variant} onClose={() => discardToast(id)}>
