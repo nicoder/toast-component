@@ -3,6 +3,7 @@ import React from 'react';
 import Button from '../Button';
 import ToastShelf from '../ToastShelf';
 import ToastProvider from '../ToastProvider';
+import useEscapeKey from '../../hooks/useEscapeKey';
 
 import styles from './ToastPlayground.module.css';
 
@@ -13,14 +14,7 @@ function ToastPlayground() {
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
   const [toasts, setToasts] = React.useState([]);
 
-  React.useEffect(() => {
-    function handleKeydown(event) {
-      if (event.code === 'Escape') setToasts([]);
-    }
-
-    document.addEventListener('keydown', handleKeydown);
-    return () => document.removeEventListener('keydown', handleKeydown);
-  }, []);
+  useEscapeKey(() => setToasts([]));
 
   function handleSubmit(event) {
     event.preventDefault();
