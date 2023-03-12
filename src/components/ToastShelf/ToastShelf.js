@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Toast from '../Toast';
-import ToastProvider from '../ToastProvider';
+import {ToastContext} from '../ToastProvider';
 
 import styles from './ToastShelf.module.css';
 
 function ToastShelf() {
-  const {toasts, discardToast} = React.useContext(ToastProvider);
+  const {toasts, discardToast} = React.useContext(ToastContext);
   return (
     <ol
       role="region"
